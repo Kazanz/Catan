@@ -1,5 +1,5 @@
 """
-Be sure to replace YOURSITEHERE with the name of your site.
+Be sure to replace catan with the name of your site.
 """
 
 import os
@@ -33,9 +33,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'YOURSITEHERE.urls'
+ROOT_URLCONF = 'catan.urls'
 
-WSGI_APPLICATION = 'YOURSITEHERE.wsgi.application'
+WSGI_APPLICATION = 'catan.wsgi.application'
 
 
 ############
@@ -128,7 +128,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEBUG_APPS = None
 try:
-    from YOURSITEHERE.local_settings import *
+    from catan.local_settings import *
 except ImportError:
     pass
 else:
