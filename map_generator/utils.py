@@ -27,8 +27,8 @@ class LandPool(_BasePool):
     """This object returns a list of available land tiles. The default fields
     are the total in each expansion. NOT cumulative."""
 
-    original = {'g': 4, 'l': 4, 'w': 4, 'o': 3, 'b': 3, 'd': 1}
-    exp = {'g': 2, 'l': 2, 'w': 2, 'o': 2, 'b': 2, 'd': 1}
+    original = {'s': 4, 'f': 4, 'w': 4, 'o': 3, 'b': 3, 'd': 1}
+    exp = {'s': 2, 'f': 2, 'w': 2, 'o': 2, 'b': 2, 'd': 1}
 
 
 class NumberPool(_BasePool):
@@ -36,17 +36,28 @@ class NumberPool(_BasePool):
     are the total in each expansion. NOT cumulative."""
 
     original = {2: 1 , 3: 2, 4: 2, 5: 2, 6: 2, 8: 2, 9:2, 10: 2, 11: 2, 12: 1}
-    exp = {2: 1 , 3: 2, 4: 2, 5: 2, 6: 2, 8: 2, 9:2, 10: 2, 11: 2, 12: 1}
+    exp = {2: 2 , 3: 3, 4: 3, 5: 3, 6: 3, 8: 3, 9: 3, 10: 3, 11: 3, 12: 2}
 
 
-class CatanMap(LandPool, NumberPool):
+class CatanMap():
     """This is the main map object display. This class randomizes itself."""
-    def __init__(self, *args, **kwargs):
-        self.board_size = kwargs.pop('board_size')
-        super(CatanMap, self).__init__(*args, **kwargs)
-        self.landpool = self.generate()
+    width = {'orig':5, 'exp':7}
 
-    def randomize(self, hard=False):
-        if hard or not self.landpool: self.landpool = self.generate()
-        shuffle(self.landpool)
-        return [self.landpool.pop() for unused_i in range(0, self.board_size)]
+    def __init__(self, *args, **kwargs):
+        self.version = kwargs.pop('version')
+        self.players = kwargs.pop('players')
+        self.landpool = LandPool(version=self.version, players=self.players)
+        self.numberspool = NumberPool(version=self.version, players=self.players)
+        self.land = None
+        self.numbers = None
+
+    def randomize(self):
+        land = self._get_random_pool(self.land, 'land')
+        nums = self._get_random_pool(self.numbers, 'numbers')
+        return land, nums, self.width.get(self.version)
+
+    def _get_random_pool(self, pool, name):
+        if not pool: pool = getattr(self, name + 'pool').generate()
+        shuffle(pool)
+        setattr(self, name, pool)
+        return [pool.pop() for unused_i in range(0, len(pool))]

@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<script>
+    LAND = {{ land|safe }};
+    NUMBERS = {{ numbers|safe }};
+</script>
 {% endblock  %}
 
 {% block body %}
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container">
+    <div class="container" ng-app="mapApp">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
@@ -15,10 +20,50 @@
           {% endfor %}
         </div>
         <div class="col-md-8">
-          <h2>Map</h2>
+
+            <script type="text/ng-template" id="map_piece.html">
+            <img style="-ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+    transform: rotate(30deg);" height="50" width="50" src="{% static 'img/b-hex.png' %}"> 
+            </script>
+
+            <h2>Map</h2>
+            <div class='hex-row'>
+                <center>
+              <piece index="0"></piece>
+              <piece index="1"></piece>
+              <piece index="2"></piece>
+                </center>
+            </div>
+            <div class='alt-row'>
+              <piece index="3"></piece>
+              <piece index="4"></piece>
+              <piece index="5"></piece>
+              <piece index="6"></piece>
+            </div>
+            <div class='hex-row'>
+              <piece index="7"></piece>
+              <piece index="8"></piece>
+              <piece index="9"></piece>
+              <piece index="10"></piece>
+              <piece index="11"></piece>
+            </div>
+            <div class='hex-row'>
+              <piece index="0"></piece>
+              <piece index="1"></piece>
+              <piece index="2"></piece>
+              <piece index="4"></piece>
+            </div>
+            <div class='alt-row'>
+              <piece index="3"></piece>
+              <piece index="5"></piece>
+              <piece index="6"></piece>
+            </div>
+        </div>
+
+
         </div>
       </div>
-
       <hr>
 {% endblock %}
 

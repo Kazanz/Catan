@@ -1,12 +1,108 @@
+.c-hex {
+  background-color: #64C7CC;
+}
+.c-hex:before {
+  border-bottom: 23.09px solid #64C7CC;
+}
+.c-hex:after {
+  border-top: 23.09px solid #64C7CC;
+}
 
+.b-hex {
+  background-color: #d92323;
+}
+.b-hex:before {
+  border-bottom: 23.09px solid #d92323;
+}
+.b-hex:after {
+  border-top: 23.09px solid #d92323;
+}
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+.f-hex {
+  background-color: #164e08;
+}
+.f-hex:before {
+  border-bottom: 23.09px solid #164e08;
+}
+.f-hex:after {
+  border-top: 23.09px solid #164e08;
+}
 
+.s-hex {
+  background-color: #74cd5f;
+}
+.s-hex:before {
+  border-bottom: 23.09px solid #74cd5f;
+}
+.s-hex:after {
+  border-top: 23.09px solid #74cd5f;
+}
 
+.o-hex {
+  background-color: #6c6c6c;
+}
+.o-hex:before {
+  border-bottom: 23.09px solid #6c6c6c;
+}
+.o-hex:after {
+  border-top: 23.09px solid #6c6c6c;
+}
 
+.w-hex {
+  background-color: #eceb22;
+}
+.w-hex:before {
+  border-bottom: 23.09px solid #eceb22;
+}
+.w-hex:after {
+  border-top: 23.09px solid #eceb22;
+}
 
+.d-hex {
+  background-color: #cdba7f;
+}
+.d-hex:before {
+  border-bottom: 23.09px solid #cdba7f;
+}
+.d-hex:after {
+  border-top: 23.09px solid #cdba7f;
+}
+
+.hexagon {
+  position: relative;
+  width: 80px; 
+  height: 46.19px;
+  margin: 23.09px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+}
+
+.hexagon {
+    display: inline-block;
+}
+
+.hex-row {
+}
+
+.alt-row {
+    margin: -25px;
+}
 
 
 

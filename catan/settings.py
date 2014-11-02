@@ -129,6 +129,10 @@ PIPELINE_JS = {
     'top-js': {
         'source_filenames': (
             'js/vendor/modernizr-2.6.2-respond-1.1.0.min.js',
+            'js/angular.min.js',
+            'js/map/app.js',
+            'js/map/controllers.js',
+            'js/map/directives.js',
         ),
         'output_filename': 'base.min.js',
     },
